@@ -1,0 +1,675 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add these to your global.css file */
+
+@keyframes scan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.animate-scan {
+  animation: scan 2s linear infinite;
+}
+
+.holographic {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 200%;
+  animation: holographic 8s ease infinite;
+}
+
+@keyframes holographic {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.3;
+  }
+  50% {
+    background-position: 100% 100%;
+    opacity: 0.6;
+  }
+  100% {
+    background-position: 0% 0%;
+    opacity: 0.3;
+  }
+}
+
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(128, 128, 128, 0.1) 0.5px,
+    transparent 1px,
+    transparent 2px
+  );
+  background-size: 100% 4px;
+}
+
+.cyberpunk-grid {
+  background-image: radial-gradient(circle, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 0, 128, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.light-grid {
+  background-image: radial-gradient(circle, rgba(128, 90, 213, 0.1) 1px, transparent 1px),
+    radial-gradient(circle, rgba(184, 116, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+/* For the particles effect - you'll need to implement this using JS */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 262 80% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 191 97% 77%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.5rem;
+
+    /* Enhanced vibrant theme colors */
+    --vibrant-pink: #ff2a6d;
+    --vibrant-purple: #d300c5;
+    --vibrant-blue: #00f7ff;
+    --vibrant-yellow: #ffe700;
+    --vibrant-green: #05ffa1;
+    --vibrant-orange: #ff7700;
+    --vibrant-red: #ff0055;
+
+    /* Gradients */
+    --gradient-1: linear-gradient(to right, var(--vibrant-pink), var(--vibrant-purple));
+    --gradient-2: linear-gradient(to right, var(--vibrant-blue), var(--vibrant-green));
+    --gradient-3: linear-gradient(to right, var(--vibrant-yellow), var(--vibrant-orange));
+    --gradient-4: linear-gradient(to right, var(--vibrant-purple), var(--vibrant-blue));
+    --gradient-5: linear-gradient(to right, var(--vibrant-green), var(--vibrant-yellow));
+
+    /* Shadows */
+    --neon-shadow-pink: 0 0 10px rgba(255, 42, 109, 0.5), 0 0 20px rgba(255, 42, 109, 0.3);
+    --neon-shadow-blue: 0 0 10px rgba(0, 247, 255, 0.5), 0 0 20px rgba(0, 247, 255, 0.3);
+    --neon-shadow-purple: 0 0 10px rgba(211, 0, 197, 0.5), 0 0 20px rgba(211, 0, 197, 0.3);
+    --neon-shadow-yellow: 0 0 10px rgba(255, 231, 0, 0.5), 0 0 20px rgba(255, 231, 0, 0.3);
+    --neon-shadow-green: 0 0 10px rgba(5, 255, 161, 0.5), 0 0 20px rgba(5, 255, 161, 0.3);
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 262 80% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 191 97% 77%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+  }
+
+  .cyberpunk {
+    --background: 260 20% 10%;
+    --foreground: 180 100% 80%;
+    --card: 260 20% 12%;
+    --card-foreground: 180 100% 80%;
+    --popover: 260 20% 12%;
+    --popover-foreground: 180 100% 80%;
+    --primary: 326 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 260 20% 10%;
+    --muted: 260 20% 15%;
+    --muted-foreground: 180 70% 70%;
+    --accent: 60 100% 50%;
+    --accent-foreground: 260 20% 10%;
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 326 50% 50%;
+    --input: 260 20% 15%;
+    --ring: 326 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    cursor: none;
+  }
+
+  /* Hide default cursor when custom cursor is active */
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Fix scrollbar issues */
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Enhanced background with more color */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(211, 0, 197, 0.15), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(0, 247, 255, 0.15), transparent 40%),
+    radial-gradient(circle at center, rgba(255, 42, 109, 0.1), transparent 60%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Modern glass effects */
+.glass {
+  background-color: rgba(23, 23, 23, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 42, 109, 0.1),
+    0 0 15px rgba(0, 247, 255, 0.1);
+}
+
+.glass-card {
+  background-color: rgba(23, 23, 23, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 42, 109, 0.1),
+    0 0 15px rgba(0, 247, 255, 0.1);
+  border-radius: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 42, 109, 0.2),
+    0 0 20px rgba(0, 247, 255, 0.2);
+}
+
+/* Glow effects */
+.neon-glow-pink {
+  box-shadow: var(--neon-shadow-pink);
+}
+
+.neon-glow-blue {
+  box-shadow: var(--neon-shadow-blue);
+}
+
+.neon-glow-purple {
+  box-shadow: var(--neon-shadow-purple);
+}
+
+.neon-glow-yellow {
+  box-shadow: var(--neon-shadow-yellow);
+}
+
+.neon-glow-green {
+  box-shadow: var(--neon-shadow-green);
+}
+
+/* Text effects */
+.gradient-text-1 {
+  color: transparent;
+  background-clip: text;
+  background-image: var(--gradient-1);
+}
+
+.gradient-text-2 {
+  color: transparent;
+  background-clip: text;
+  background-image: var(--gradient-2);
+}
+
+.gradient-text-3 {
+  color: transparent;
+  background-clip: text;
+  background-image: var(--gradient-3);
+}
+
+.gradient-text-4 {
+  color: transparent;
+  background-clip: text;
+  background-image: var(--gradient-4);
+}
+
+.gradient-text-5 {
+  color: transparent;
+  background-clip: text;
+  background-image: var(--gradient-5);
+}
+
+/* Modern button styles */
+.modern-button {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(23, 23, 23, 0.6);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.modern-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--gradient-1);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.modern-button:hover::before {
+  opacity: 1;
+}
+
+.modern-button-2 {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(23, 23, 23, 0.6);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.modern-button-2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--gradient-2);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.modern-button-2:hover::before {
+  opacity: 1;
+}
+
+/* Custom cursor */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--vibrant-pink);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.3s;
+}
+
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid var(--vibrant-blue);
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+/* Button effects */
+.magnetic-button {
+  position: relative;
+  display: inline-block;
+}
+
+/* Loader */
+.loader-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(var(--background));
+  z-index: 50;
+}
+
+.loader-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: transparent;
+  background-clip: text;
+  background-image: var(--gradient-1);
+}
+
+/* Modern card designs */
+.modern-card {
+  position: relative;
+  background-color: rgba(23, 23, 23, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--neon-shadow-blue);
+}
+
+.modern-card:hover::before {
+  opacity: 1;
+}
+
+/* Skill tag styles */
+.skill-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgba(23, 23, 23, 0.6);
+  color: white;
+  margin: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neon-shadow-pink);
+}
+
+/* Progress bar styles */
+.progress-bar {
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background-image: var(--gradient-1);
+  transition: width 1s ease;
+}
+
+/* Section styles */
+.section-heading {
+  position: relative;
+  display: inline-block;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 3rem;
+  height: 0.25rem;
+  background-image: var(--gradient-1);
+  border-radius: 9999px;
+}
+
+/* Background patterns */
+.dot-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes borderGlow {
+  0%,
+  100% {
+    border-color: var(--vibrant-pink);
+  }
+  25% {
+    border-color: var(--vibrant-purple);
+  }
+  50% {
+    border-color: var(--vibrant-blue);
+  }
+  75% {
+    border-color: var(--vibrant-green);
+  }
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.5s ease forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.5s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+.animate-border {
+  animation: borderGlow 4s linear infinite;
+}
+
+/* Staggered animation utility */
+.stagger-item {
+  opacity: 0;
+}
+
+.stagger-item.in-view {
+  animation: slideUp 0.5s ease forwards;
+}
+
+/* Parallax effect */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 1.75rem;
+  }
+
+  .section-heading::after {
+    width: 2rem;
+  }
+}
+
